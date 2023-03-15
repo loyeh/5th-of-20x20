@@ -12,28 +12,29 @@ body {
   justify-content: center;
   padding: 40px;
 }
-.main,
-.row {
+.main {
   display: flex;
   flex-direction: row;
 }
 
 .button_container {
-  display: grid;
   border-right: 1px solid black;
   padding: 15px;
 }
 button {
+  display: block;
+  position: relative;
+  top: -20px;
   background-color: transparent;
   width: 220px;
   /* height: 35px; */
   padding: 10px 0px;
+  margin: 20px;
   font-weight: bold;
   border-radius: 5px;
   border-color: black;
   box-shadow: unset;
   filter: unset;
-  margin: 10px;
 }
 i {
   margin: 4px 10px;
@@ -49,6 +50,8 @@ i {
   margin-left: 15px;
 }
 .row {
+  position: relative;
+  top: 10px;
   width: 450px;
   height: 25px;
 }
