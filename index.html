@@ -16,14 +16,17 @@
     <div class="button_container">
       <button onclick="add()">Add User<i class="fa-solid fa-user-plus"></i></button>
       <button onclick="double()">Double Money<i class="fa-brands fa-sellcast"></i></button>
-      <button>Show only millionaires<i class="fa-solid fa-money-check-dollar"></i></button>
-      <button>Sort by Richest<i class="fa-solid fa-arrow-down"></i></button>
-      <button>Calculate Entire Wealth<i class="fa-brands fa-shirtsinbulk" id="calculate"></i></button>
+      <button onclick="filterUser()">Show only millionaires<i class="fa-solid fa-money-check-dollar"></i></button>
+      <button onclick="sortUser()">Sort by Richest<i class="fa-solid fa-arrow-down"></i></button>
+      <button onclick="total()">Calculate Entire Wealth<i class="fa-brands fa-shirtsinbulk" id="calculate"></i></button>
     </div>
     <div class="container">
-      <div class="row title">
-        <div class="col_1">Person</div>
-        <div class="col_2">Wealth</div>
+      <div class="title">
+        <div class="row ">
+          <div class="col_1">Person</div>
+          <div class="col_2">Wealth</div>
+        </div>
+        <div class="user_info"></div>
       </div>
     </div>
   </div>

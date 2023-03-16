@@ -1,11 +1,11 @@
-const container = document.querySelector(".container");
-
+const container = document.querySelector(".user_info");
+const userArray = [];
 const btn = document.querySelector("button");
 
 function userGenerator(nameObj) {
   const nameObject = {};
-  nameObject.firstName = nameObj.first;
-  nameObject.lastName = nameObj.last;
+  nameObject.userName = nameObj.first + " " + nameObj.last;
+
   const wealth = Math.trunc(crypto.getRandomValues(new Uint32Array(1))[0] / 1000);
 
   // const wealthObj = {
@@ -26,8 +26,8 @@ function userGenerator(nameObj) {
 
   //  wealth_text = `$ ${wealthObj.giga},${wealthObj.mega},${wealthObj.kilo}.00`;
   nameObject.wealth = wealth;
-  console.log(nameObject);
-  addUser(nameObject);
+
+  return nameObject;
 }
 async function getData() {
   const response = await fetch("https://randomuser.me/api");
@@ -48,7 +48,7 @@ function addUser(userData) {
   const row = document.createElement("div");
   row.className = "row";
   const userName = document.createElement("div");
-  userName.innerText = `${userData.firstName}  ${userData.lastName}`;
+  userName.innerText = userData.userName;
   userName.classList = "col_1";
   const userWealth = document.createElement("div");
   userWealth.innerText = numberWithCommas(userData.wealth);
@@ -58,8 +58,54 @@ function addUser(userData) {
 }
 function add() {
   getData().then((response) => {
-    userGenerator(response);
+    const nameObject = userGenerator(response);
+    userArray.push(nameObject);
+    addUser(nameObject);
   });
 }
 
-btn.addEventListener("click", myClick);
+function double() {
+  const newArray = userArray.map((obj) => {
+    obj.wealth = 2 * obj.wealth;
+    return obj;
+  });
+
+  showUsers(newArray);
+}
+
+function showUsers(userArr) {
+  container.innerHTML = "";
+  userArr.forEach((userObj) => {
+    addUser(userObj);
+  });
+}
+function filterUser() {
+  const newArray = userArray.filter((obj) => obj.wealth > 999999);
+
+  showUsers(newArray);
+}
+function sortUser() {
+  userArray.sort((a, b) => {
+    return b.wealth - a.wealth;
+  });
+
+  showUsers(userArray);
+}
+function total() {
+  const totalWealth = userArray.reduce((sum, userObject) => sum + Number(userObject.wealth), 0);
+  const row = document.createElement("div");
+  row.className = "row total";
+  const userName = document.createElement("div");
+  userName.innerText = "Total Wealth";
+  userName.classList = "col_1";
+  const userWealth = document.createElement("div");
+  userWealth.innerText = numberWithCommas(totalWealth);
+  userWealth.className = "col_2";
+  row.append(userName, userWealth);
+  container.appendChild(row);
+}
+window.addEventListener("load", () => {
+  for (let i = 0; i < 3; i++) {
+    add();
+  }
+});

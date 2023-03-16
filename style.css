@@ -44,9 +44,6 @@ i {
 }
 
 .container {
-  display: flex;
-  position: relative;
-  flex-direction: column;
   margin-left: 15px;
 }
 .row {
@@ -62,7 +59,12 @@ i {
   margin-bottom: 15px;
   height: 40px;
 }
-
+.user_info {
+  position: relative;
+  height: 400px;
+  margin-top: 16px;
+  font-size: 16px;
+}
 .col_1,
 .col_2 {
   font-family: Arial, Helvetica, sans-serif;
@@ -75,9 +77,14 @@ i {
 .col_2 {
   right: 0;
 }
-.col_1.total {
+.total > .col_1 {
   font-weight: normal;
 }
-.col_2.total {
+.total > .col_2 {
   font-weight: bold;
+}
+.total {
+  position: relative;
+  top: 30px;
+  border-top: 1px solid black;
 }
