@@ -36,6 +36,9 @@ button {
   box-shadow: unset;
   filter: unset;
 }
+button:focus {
+  outline: 1px solid blue;
+}
 i {
   margin: 4px 10px;
   color: goldenrod;
