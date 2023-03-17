@@ -1,4 +1,5 @@
 const container = document.querySelector(".user_info");
+const main = document.querySelector(".main");
 const userArray = [];
 const btn = document.querySelector("button");
 
@@ -107,5 +108,13 @@ function total() {
 window.addEventListener("load", () => {
   for (let i = 0; i < 3; i++) {
     add();
+  }
+});
+window.addEventListener("load", () => {
+  console.log(window.screen.width, main.clientWidth);
+  if (window.screen.availWidth < 800) {
+    const scaleFactor = window.screen.width / 800;
+    main.style.scale = `${scaleFactor}`;
+    console.log(scaleFactor);
   }
 });
